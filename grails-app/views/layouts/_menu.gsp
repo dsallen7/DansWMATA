@@ -1,0 +1,1 @@
+<g:link action="index" controller="rail">Rail Info</g:link>
