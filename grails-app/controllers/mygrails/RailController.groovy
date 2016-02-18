@@ -14,12 +14,7 @@ class RailController {
 		Map mdl = [lineNames:lineList.Lines]
 		render(view:"index", model:mdl)
 	}
-	
-	def myAction = { DansCommand cmd ->
-		Map mdl = [name:cmd.name, age:cmd.age]
-		render(view:"index", model:mdl)
-	}
-	
+		
 	def getStationNamesForLine = {
 		def line = params.LineCode
 		def stationList = wmataService.getStationNamesForLine(line)
@@ -38,8 +33,12 @@ class RailController {
 		render time.Trains as JSON
 	}
 	
+	def getTripInfo= { RailTransfer cmd ->
+		
+	}
+	
 }
-class DansCommand{
-	Integer age;
-	String name;
+class RailTransfer{
+	String station1;
+	String station2;
 }

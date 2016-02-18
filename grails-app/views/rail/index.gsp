@@ -12,6 +12,7 @@
 </head>
 
 <body>
+	<g:form controller="Rail" action="GetTripInfo">
 	<table>
 		<tr>
 			<td><g:select name="lineFrom"
@@ -20,8 +21,11 @@
 			optionValue="DisplayName"
 			noSelection="${['null':'Select A Line']}"
 			onchange="updateStationNames('From')" /></td>
-			<td><div id="selectStationFrom"><g:select name="stationFrom"
-			from="" onchange="getNextTrainTimesForStation('From')" /></div></td>
+			<td>
+			<div id="selectStationFrom">
+				<g:select name="stationFrom"
+						from="" 
+						onchange="showIntersectingStation()" /></div></td>
 			<td><div id="waitForStationFrom">
 			<asset:image src="spinner.gif" width="16" height="16"/>
 			</div></td>
@@ -35,13 +39,22 @@
 			noSelection="${['null':'Select A Line']}"
 			onchange="updateStationNames('To')" /></td>
 			<td><div id="selectStationTo"><g:select name="stationTo"
-			from="" onchange="getNextTrainTimesForStation('To')" /></div></td>
+			from=""
+			onchange="showIntersectingStation()" /></div></td>
 			<td><div id="waitForStationTo">
 			<asset:image src="spinner.gif" width="16" height="16"/>
 			</div></td>
 			<td><div id="ToAddress"></div><div id="ToTimes"></div></td>
 		</tr>
+		<tr>
+			<td><div id="TransferStation"></div></td>
+			<td><div id="StationAddress"></div></td>
+		</tr>
 	</table>
+	</g:form>
 </body>
+
+<!-- 			onchange="getNextTrainTimesForStation('From')" 
+			onchange="getNextTrainTimesForStation('To')"-->
 
 </html>
